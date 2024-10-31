@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "molfeat-kpgt"
+dynamic = ["version"]
+authors = [
+  { name="Yaropolk Patsahan", email="yaropolkpa@gmail.com" },
+]
+description = "Plugin that imports KPGT model into molfeat framework"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+dependencies = [
+    "molfeat"
+]
+
+[project.urls]
+Homepage = "https://github.com/YaropolkPa/molfeat-kpgt"
+Issues = "https://github.com/YaropolkPa/molfeat-kpgt/issues"
+Website = "https://molfeat.datamol.io"
+Documentation = "https://molfeat-docs.datamol.io"
+
+[project.entry-points."molfeat.trans.pretrained"]
+"kpgt" = "molfeat_kpgt.trans.kpgt_nfp:KPGTModel"
+
+[tool.setuptools]
+include-package-data = true
+zip-safe = false
+license-files = ["LICENSE"]
+
+[tool.setuptools_scm]
+fallback_version = "dev"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["molfeat_kpgt", "molfeat_kpgt.*"]
+exclude = []
+namespaces = true

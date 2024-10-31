@@ -1,22 +1,19 @@
-import unittest as ut
 import pytest
 
 
-
-class TestImport(ut.TestCase):
+class TestImport:
     def test_import_plugin(self):
         try:
-            from molfeat_kpgt.calc import KPGTDescriptors as KPGT
+            from molfeat_kpgt.trans.kpgt_nfp import KPGTModel as KPGT
         except ImportError:
-            pytest.fail("Failed to import KPGTDescriptors from molfeat_kpgt")
+            pytest.fail("Failed to import KPGTModel from molfeat_kpgt")
 
-        # load_registered_plugins()
-        # try:
-        #     from molfeat.calc import KPGTDescriptors
-        # except ImportError:
-        #     pytest.fail("Failed to import KPGTDescriptors from molfeat")
+        from molfeat.plugins import load_registered_plugins
 
-        # assert KPGT == KPGTDescriptors, "KPGTDescriptors is not the same class"
+        load_registered_plugins(add_submodules=True, plugins=["kpgt"])
+        try:
+            from molfeat.trans.pretrained import KPGTModel
+        except ImportError:
+            pytest.fail("Failed to import KPGTModel from molfeat")
 
-if __name__ == "__main__":
-    ut.main()
+        assert KPGT == KPGTModel, "KPGTModel is not the same class"

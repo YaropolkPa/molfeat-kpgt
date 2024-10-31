@@ -1,1 +1,1 @@
-from .calc.kpgt import KPGTDescriptors
+from .trans.kpgt_nfp import KPGTModel

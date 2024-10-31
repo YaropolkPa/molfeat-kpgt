@@ -351,9 +351,10 @@ RDKIT_PROPS = {"1.0.0": ['BalabanJ', 'BertzCT', 'Chi0', 'Chi0n', 'Chi0v', 'Chi1'
                          'VSA_EState9', 'qed']
                }
 
-CURRENT_VERSION = "1.0.1"
+CURRENT_VERSION = "1.0.1"   # TODO: fr_staff...
 
 FUNCS = {name:func for name, func in Descriptors.descList}
+
 def applyFunc(name, m):
     try:
         return FUNCS[name](m)
